@@ -6,17 +6,17 @@ import java.util.ArrayList;
 public class Storage {
     private List<Patient> patients = new ArrayList<>();
 
-    void addPatients(Patient patient) {
+    public void addPatients(Patient patient) {
         patients.add(patient);
     }
-    void printPatients() {
-        patients.forEach((patient) -> System.out.println("HealthID: " + patient.healthinsuranceID + ", Name: " + patient.name + ", Lastname: " + patient.lastname));
+    public void printPatients() {
+        patients.forEach((patient) -> System.out.println("HealthID: " + patient.getHealthID() + ", Name: " + patient.getName() + ", Lastname: " + patient.getLastname()));
     }
 
-    Patient selectPatient(String input) {
+    public Patient selectPatient(String input) {
         Patient result = null;
         for(Patient paitent: patients){
-            if (input == Integer.toString(paitent.healthinsuranceID)) {
+            if (input == Integer.toString(paitent.getHealthID())) {
                 result = paitent;
             }
         }
