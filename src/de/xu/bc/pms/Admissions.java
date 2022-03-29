@@ -1,17 +1,17 @@
 package de.xu.bc.pms;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Admissions
 {
     private String admissionID;
-    private Date registration;
+    private LocalDateTime registration;
     private String patientID;
 
-    public Admissions (String admissionID, Date registration, String patientID)
+    public Admissions (String admissionID, String patientID)
     {
         this.admissionID = admissionID;
-        this.registration = registration;
+        registration = LocalDateTime.now();
         this.patientID = patientID;
     }
 
@@ -19,7 +19,7 @@ public class Admissions
         return admissionID;
     }
 
-    public Date getStart() {
+    public LocalDateTime getStart() {
         return registration;
     }
 
