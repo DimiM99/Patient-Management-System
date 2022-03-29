@@ -12,7 +12,7 @@ public class Appointment
 	private String treatment;
 	
 	
-	public Appointment(Patient patient, String treatment, int appointmentID) 
+	public Appointment(Patient patient, String treatment) 
 	{
 		this.patient = patient;
 		this.treatment = treatment;
