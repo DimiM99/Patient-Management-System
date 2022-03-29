@@ -3,19 +3,19 @@ package de.xu.bc.pms;
 public class Patient 
 {
 	
-	public String name;
-	public String lastname;
-	public String birthday;
-	public String address;
-	public int phonenumber;
-	public int healthinsuranceID;
-	public String healthinsuranceProvider;
+	private String name;
+	private String lastname;
+	private String birthday;
+	private String address;
+	private int phonenumber;
+	private int healthinsuranceID;
+	private String healthinsuranceProvider;
 
 	
 	public Patient(String name, String lastname, String birthday, String address, int phonenumber, int healthinsuranceID, String healthinsuranceProvider) 
 	{
-		this.name = name;
-		this.lastname = lastname;
+		this.setName(name);
+		this.setLastname(lastname);
 		this.birthday = birthday;
 		this.address = address;
 		this.phonenumber = phonenumber;
@@ -26,8 +26,24 @@ public class Patient
 	@Override
 	public String toString() 
 	{
-		return String.format("name: %s %s\nbirthday: %s\naddress: %s\nphonenumber: %s\nhealthinsuranceID: %s\nhealthinsuranceProvider: %s",name, lastname, birthday, address, phonenumber, healthinsuranceID, healthinsuranceProvider);
+		return String.format("name: %s %s\nbirthday: %s\naddress: %s\nphonenumber: %s\nhealthinsuranceID: %s\nhealthinsuranceProvider: %s",getName(), getLastname(), birthday, address, phonenumber, healthinsuranceID, healthinsuranceProvider);
 	
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
 

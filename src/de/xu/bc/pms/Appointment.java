@@ -1,26 +1,30 @@
 package de.xu.bc.pms;
+import java.time.LocalDateTime;
+
 
 public class Appointment
 {
-	public Patient patient;
-	public String date;
-	public String treatment;
-	public int appointmentID;
-	public int time;
+	private int appointmentID;
+	private static int sequence = 0;
 	
-	public Appointment(Patient patient, String date, String treatment, int appointmentID, int time) 
+	public Patient patient;
+	private LocalDateTime time;
+	private String treatment;
+	
+	
+	public Appointment(Patient patient, String treatment, int appointmentID) 
 	{
 		this.patient = patient;
-		this.date = date;
 		this.treatment = treatment;
-		this.appointmentID = appointmentID;
-		this.time = time;
+		this.appointmentID=++sequence;
+		this.time = LocalDateTime.now();
+		
 	}
 	
 	@Override
 	public String toString() 
 	{
-		return String.format("name: %s %s\ndate: %s\ntreatment: %s\nappointmentID: %s\ntime: %s",patient.name, patient.lastname, date, treatment, appointmentID, time);
+		return String.format("name: %s %s\ntreatment: %s\nappointmentID: %s\ntime: %s",patient.getName(), patient.getLastname(), treatment, appointmentID, time.toString());
 	
 	}
 }
