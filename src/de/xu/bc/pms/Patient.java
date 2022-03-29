@@ -34,6 +34,10 @@ public class Patient
 		return lastname;
 	}
 
+	public Integer getHealthID() {
+		return healthinsuranceID;
+	}
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}

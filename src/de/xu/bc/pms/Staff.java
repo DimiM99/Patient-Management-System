@@ -1,9 +1,5 @@
 package de.xu.bc.pms;
 
-interface entriesManagemnt {
-    //interface that will be implemented by the class Staff
-    //need Appointment and Patient classes to code this up
-}
 
 
 public class Staff {
