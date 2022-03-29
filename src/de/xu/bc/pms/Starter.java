@@ -78,6 +78,7 @@ public class Starter {
 		 
 		 
 		 Patient patient = new Patient(name, lastname, birthday, address, phonenumber, healthinsuranceID, healthinsuranceProvider);
+		 Storage.addPatients(patient);
  
 		 return patient;
 	}
@@ -91,7 +92,14 @@ public class Starter {
 		
 		System.out.println("Is this a new Patient? (Y)/(N)");
 		
-		char answer = s.next().charAt(0);
+		
+		
+		
+		char answer = s.nextLine().charAt(0);
+		
+		answer  = Character.toUpperCase(answer);
+		
+		//char answer = s.next().charAt(0);
 		
 		
 		switch(answer) {
@@ -99,12 +107,16 @@ public class Starter {
 				 patient = createPatient();
 				 break;
 			case 'N':
-				System.out.print("Please Provide Patient ID: ");
-				String id = s.nextLine();
+				    System.out.print("Please Provide Patient ID: ");
 				
 				
-				 patient = Storage.selectPatientbyID(id);
-				 System.out.print(patient);
+					String id = s.nextLine();
+					
+					
+					 patient = Storage.selectPatientbyID(id);
+					
+				
+				
 				 
 		}
 

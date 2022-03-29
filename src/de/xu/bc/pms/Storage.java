@@ -19,9 +19,9 @@ public class Storage
 
     static Patient selectPatientbyID(String input)
     {
-        System.out.println("Storage.selectPatientbyID()"+ input);
+       
     	Patient result = null;
-        System.out.print(input);
+
         for(Patient patient: patients)
         {
         	
