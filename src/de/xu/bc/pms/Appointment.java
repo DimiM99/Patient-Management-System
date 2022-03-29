@@ -5,10 +5,13 @@ import java.time.LocalDateTime;
 public class Appointment
 {
 	private int appointmentID;
+
 	private static int sequence = 0;
 	
 	public Patient patient;
+
 	private LocalDateTime time;
+
 	private String treatment;
 	
 	

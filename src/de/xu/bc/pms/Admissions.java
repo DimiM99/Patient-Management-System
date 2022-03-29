@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class Admissions
 {
-    private String admissionID;
-    private LocalDateTime registration;
-    private String patientID;
+    final private String admissionID;
+    final private LocalDateTime registration;
+    final private String patientID;
 
     public Admissions (String admissionID, String patientID)
     {
