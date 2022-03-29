@@ -2,6 +2,7 @@
  * 
  */
 package de.xu.bc.pms;
+import java.time.LocalDateTime;
 import java.util.*;
 /**
  * @author mohammed
@@ -35,7 +36,7 @@ public class Starter {
 			System.out.println(createPatient());
 			break;
 		case 2:
-			System.out.println("AppointmentSelected");
+			System.out.println(createAppointment());
 			break;
 		default:
 			System.out.println("InvalidInput");
@@ -77,6 +78,24 @@ public class Starter {
 		 Patient patient = new Patient(name, lastname, birthday, address, phonenumber, healthinsuranceID, healthinsuranceProvider);
  
 		 return patient;
+	}
+	
+	private static Appointment createAppointment() {
+		
+		Scanner s = new Scanner(System.in);
+		
+		Patient patient = new Patient("John", "Doe", "01.01.2000","Marlene-Dietrich-Allee", 123456879, 9876543, "BKK");
+		
+		//public Patient patient;
+		//private LocalDateTime time;
+		  String treatment;
+		
+		System.out.print("Treatment: ");
+		treatment = s.nextLine();
+		
+		Appointment appointment = new Appointment(patient, treatment);
+		
+		return appointment;
 	}
 	
 }
