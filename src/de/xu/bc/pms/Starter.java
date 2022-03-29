@@ -15,6 +15,8 @@ public class Starter {
 	 */
 	public static void main(String[] args) {
 		
+		Storage.addPatients(new Patient("Jon","Denver","27th May","Marlene Dietrich",888,97,"TK"));
+		Storage.printPatients();
 		//System.out.println("Let the system start ...");
 		//Patient somePatient = new Patient("Vakho","Tsagareli","27 May 1996","Marlene Dietrich Allee",666,777,"The Best Insurance");
 		//System.out.println(somePatient);
@@ -76,15 +78,49 @@ public class Starter {
 		 
 		 
 		 Patient patient = new Patient(name, lastname, birthday, address, phonenumber, healthinsuranceID, healthinsuranceProvider);
+		 Storage.addPatients(patient);
  
 		 return patient;
 	}
 	
 	private static Appointment createAppointment() {
 		
+		Patient patient = null;
+		
+		
 		Scanner s = new Scanner(System.in);
 		
-		Patient patient = new Patient("John", "Doe", "01.01.2000","Marlene-Dietrich-Allee", 123456879, 9876543, "BKK");
+		System.out.println("Is this a new Patient? (Y)/(N)");
+		
+		
+		
+		
+		char answer = s.nextLine().charAt(0);
+		
+		answer  = Character.toUpperCase(answer);
+		
+		//char answer = s.next().charAt(0);
+		
+		
+		switch(answer) {
+			case 'Y':
+				 patient = createPatient();
+				 break;
+			case 'N':
+				    System.out.print("Please Provide Patient ID: ");
+				
+				
+					String id = s.nextLine();
+					
+					
+					 patient = Storage.selectPatientbyID(id);
+					
+				
+				
+				 
+		}
+
+		
 		
 		//public Patient patient;
 		//private LocalDateTime time;
@@ -93,7 +129,10 @@ public class Starter {
 		System.out.print("Treatment: ");
 		treatment = s.nextLine();
 		
+
 		Appointment appointment = new Appointment(patient, treatment);
+
+		
 		
 		return appointment;
 	}
