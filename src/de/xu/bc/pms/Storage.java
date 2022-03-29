@@ -3,23 +3,48 @@ package de.xu.bc.pms;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Storage {
-    private List<Patient> patients = new ArrayList<>();
+public class Storage 
+{
+    static private List<Patient> patients = new ArrayList<>();
 
-    void addPatients(Patient patient) {
+    static void addPatients(Patient patient) 
+    {
         patients.add(patient);
     }
-    void printPatients() {
-        patients.forEach((patient) -> System.out.println("HealthID: " + patient.healthinsuranceID + ", Name: " + patient.name + ", Lastname: " + patient.lastname));
+    static void printPatients() 
+    {
+        
+    	patients.forEach((patient) -> System.out.println("HealthID: " + patient.getHealthInsuranceID() + ", Name: " + patient.getName() + ", Lastname: " + patient.getLastname()));
     }
 
-    Patient selectPatient(String input) {
-        Patient result = null;
-        for(Patient paitent: patients){
-            if (input == Integer.toString(paitent.healthinsuranceID)) {
-                result = paitent;
+    static Patient selectPatientbyID(String input)
+    {
+       
+    	Patient result = null;
+
+        for(Patient patient: patients)
+        {
+        	
+            if (input.equals(Integer.toString(patient.getHealthInsuranceID()))) 
+            {
+                result = patient;
             }
+   
         }
         return result;
-    }
+    }       
+        
+     static Patient selectPatientbyName(String input) 
+     {
+    	 Patient result = null;
+    	 for(Patient patient: patients) 
+    	 {
+    		 if (input.equals(patient.getName())) 
+    		 {
+    			 result = patient;
+    		 }
+    	 }
+    	 return result;
+     }
+    
 }
