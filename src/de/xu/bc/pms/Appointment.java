@@ -13,6 +13,9 @@ public class Appointment
 	final private LocalDateTime time;
 
 	private String Symptoms;
+
+	private boolean isTakingPlace = true;
+	private String ReasonForCancelation = "";
 	
 	
 	public Appointment(Patient patient, String Symptoms)
@@ -23,11 +26,21 @@ public class Appointment
 		this.time = LocalDateTime.now();
 		
 	}
-	
+
+	public void cancelTheAppointment(String reasonForCancelation) {
+		this.isTakingPlace = false;
+		this.ReasonForCancelation = reasonForCancelation;
+	}
+
+
+	public int getAppointmentID() {
+		return appointmentID;
+	}
+
 	@Override
 	public String toString() 
 	{
-		return String.format("name: %s %s\ntreatment: %s\nappointmentID: %s\ntime: %s",patient.getName(), patient.getLastname(), Symptoms, appointmentID, time.toString());
+		return String.format("name: %s %s\ntreatment: %s\nappointmentID: %s\ntime: %s",patient.getName(), patient.getLastname(), Symptoms, appointmentID, time.toString(), isTakingPlace, ReasonForCancelation);
 	
 	}
 }

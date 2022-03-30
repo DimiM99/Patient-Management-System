@@ -63,6 +63,16 @@ public class Storage {
         admissions.get(i).DischargePatien(diagnose);
     }
 
+    public static void displayVisitData(Patient patient) {
+        for (Visit visit : admissions) {
+            if (visit.getPatientID() == visit.getPatientID()) {
+                visit.getData();
+            }
+        }
+    }
+
+
+
     /**
      * Managing Appointmets
      */
@@ -70,4 +80,23 @@ public class Storage {
         Appointment appointment = new Appointment(patient, reason);
         appointments.add(appointment);
     }
+
+    public static void cancelAppointment(Patient patient, String reason) {
+        int i = appointments.indexOf(patient);
+        appointments.get(i).cancelTheAppointment(reason);
+    }
+
+    public static void displayAppointmentData(Patient patient) {
+        for (Appointment appointment : appointments) {
+            if (appointment.patient == patient) {
+                appointment.toString();
+            }
+        }
+    }
+
+    /**
+     * Methods for preparing data for export
+     */
+
+
 }
