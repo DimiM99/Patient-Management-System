@@ -1,8 +1,9 @@
 package de.xu.bc.pms;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class Appointment
+public class Appointment implements Serializable
 {
 	final private int appointmentID;
 

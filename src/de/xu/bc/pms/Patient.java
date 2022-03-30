@@ -1,6 +1,8 @@
 package de.xu.bc.pms;
 
-public class Patient 
+import java.io.Serializable;
+
+public class Patient implements Serializable
 {
 	
 	private String name;

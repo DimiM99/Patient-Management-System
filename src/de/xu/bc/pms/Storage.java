@@ -1,6 +1,7 @@
 package de.xu.bc.pms;
 
 
+import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -72,7 +73,6 @@ public class Storage {
     }
 
 
-
     /**
      * Managing Appointmets
      */
@@ -97,6 +97,82 @@ public class Storage {
     /**
      * Methods for preparing data for export
      */
+
+    private static void WriteObjectToFile(Object serObj, String pathname) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(pathname);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(serObj);
+            objectOut.close();
+            System.out.println("The Object  was succesfully written to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static void exportAppointments() {
+        String pathname = "./Appointments.ser";
+        WriteObjectToFile(appointments, pathname);
+    }
+
+    private static void exportVisits() {
+        String pathname = "./Visits.ser";
+        WriteObjectToFile(admissions, pathname);
+    }
+
+    private static void exportPatients() {
+        String pathname = "./Patients.ser";
+        WriteObjectToFile(patients, pathname);
+    }
+
+    public static void export() {
+        exportPatients();
+        exportVisits();
+        exportAppointments();
+    }
+
+
+    private static void ReadFromBinFile(ArrayList<?> list, String pathname) {
+        try {
+            FileInputStream fis = new FileInputStream(pathname);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            list = (ArrayList) ois.readObject();
+            ois.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void readPatients() throws IOException, ClassNotFoundException {
+        String pathname = "./Patients.ser";
+        ReadFromBinFile((ArrayList<?>) patients, pathname);
+    }
+
+    private static void readVisits() throws IOException, ClassNotFoundException {
+        String pathname = "./Visits.ser";
+        ReadFromBinFile((ArrayList<?>) admissions, pathname);
+    }
+
+    private static void readApointments() throws IOException, ClassNotFoundException {
+        String pathname = "./Appointments.ser";
+        ReadFromBinFile((ArrayList<?>) appointments, pathname);
+    }
+
+    public static void read() {
+        try {
+            readPatients();
+            readVisits();
+            readApointments();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

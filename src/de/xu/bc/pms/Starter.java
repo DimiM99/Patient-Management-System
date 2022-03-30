@@ -14,7 +14,8 @@ public class Starter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		init();
+
 		Storage.addPatients(new Patient("Jon","Denver","27th May","Marlene Dietrich",888,97,"TK"));
 		Storage.printPatients();
 		//System.out.println("Let the system start ...");
@@ -24,7 +25,14 @@ public class Starter {
 		//System.out.println(someAppointment);
 		showMenu();
 	}
-	
+
+	/*
+	Init for check if there are files saved with data for patients
+	*/
+	private static void init() {
+		Storage.read();
+	}
+
 	private static void showMenu() 
 	{
 		Scanner s = new Scanner(System.in);
