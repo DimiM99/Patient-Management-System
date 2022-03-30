@@ -6,15 +6,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class javatocsv {
+    final static private String GlobalPath = "./Export-"+ System.currentTimeMillis()+".csv";
+
     public String convertToCSV(String[] data) {
         return Stream.of(data)
       //  .map(this::escapeSpecialCharacters)
         .collect(Collectors.joining(","));
     }
 
-    public void createCSV(String filename){
+    static private void createCSV(){
         try {
-            File myObj = new File(filename + ".csv");
+            File myObj = new File(GlobalPath);
             if (myObj.createNewFile()) {
               System.out.println("File created: " + myObj.getName());
             } else {
@@ -26,10 +28,14 @@ public class javatocsv {
           }
     }
 
-    public void writeToFile(String filename, String[] data){
+    static public void writeToFile(String[] data){
         try {
-            FileWriter myWriter = new FileWriter(filename + ".csv");
-            myWriter.write("Files in Java might be tricky, but it is fun enough!");
+            createCSV();
+            FileWriter myWriter = new FileWriter(GlobalPath );
+            for (String elemnt : data) {
+                myWriter.write(elemnt);
+                myWriter.write("\n");
+            }
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
           } catch (IOException e) {
@@ -38,7 +44,7 @@ public class javatocsv {
           }
     }
 
-    public void readFromFile(String filename){
+    static public void readFromFile(String filename){
         try {
             File myObj = new File(filename + ".csv");
             Scanner myReader = new Scanner(myObj);
